@@ -22,28 +22,14 @@ export const getArtistList = (data) => {
  */
 export const cloudsearch = (params) =>
   co(axios.get("/cloudsearch", { params }));
+/**
+ * @description 获取 APP 首页信息
+ */
+export const getHomePageData = () => co(axios.post("/homepage/block/page"));
 
-// cloudsearch().then(function (res) {
-//   console.lop(res);
-// });
-// 1.函数必须使用async关键字修饰
-// 2.await关键字后需要跟promise实例或返回promise实例的函数（执行）
-// const fn1 = async () => {
-//   try {
-//     const res = await cloudsearch();
-//     console.log(res);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// const fn2 = async () => {
-//   const res = await cloudsearch().catch((err) => console.log(err));
-//   console.log(res);
-// };
+/**
+ * @description
+ */
 
-// const fn3 = async () => {
-//   const [error, res] = await cloudsearch();
-//   if (error) {
-//     console.log(res);
-//   }
-// };
+export const getHomepageDragonBall = () =>
+  co(axios.get("/homepage/dragon/ball"));
