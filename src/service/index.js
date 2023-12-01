@@ -1,5 +1,7 @@
 import axios from "axios";
+import axiosRetry from "axios-retry";
 import { co } from "@/utils";
+axiosRetry(axios, { retries: 3 });
 /**
  * @description 获取歌手分类列表
  * @param {Object} data 请求参数
@@ -32,4 +34,4 @@ export const getHomePageData = () => co(axios.post("/homepage/block/page"));
  */
 
 export const getHomepageDragonBall = () =>
-  co(axios.get("/homepage/dragon/ball"));
+  co(axios.get("/homepage/dragon/ball1"));
