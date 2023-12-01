@@ -1,9 +1,16 @@
 import Home from "@/views/home";
-import Mine from "@/views/mine";
 const routes = [
   {
     path: "/",
-    redirect: "/home",
+    redirect: "/login",
+  },
+  {
+    path: "/discover",
+    component: () => import("@/views/discover"),
+  },
+  {
+    path: "/login",
+    component: () => import("@/views/login"),
   },
   {
     path: "/home",
@@ -13,7 +20,7 @@ const routes = [
   {
     path: "/mine",
     name: "mine",
-    component: Mine,
+    component: () => import("@/views/mine"),
   },
 ];
 

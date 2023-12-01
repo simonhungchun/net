@@ -8,7 +8,6 @@ export default {
 </script>
 <template>
   <div>
-    <button @click="fn">click me!</button>
     <Block v-for="block in blocks" :resource="block" :key="block.id" />
   </div>
 </template>

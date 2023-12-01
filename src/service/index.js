@@ -1,7 +1,5 @@
-import axios from "axios";
-import axiosRetry from "axios-retry";
+import request from "@/utils/request";
 import { co } from "@/utils";
-axiosRetry(axios, { retries: 3 });
 /**
  * @description 获取歌手分类列表
  * @param {Object} data 请求参数
@@ -11,7 +9,7 @@ axiosRetry(axios, { retries: 3 });
  * @param {Number} data.area 地域（-1:全部、7华语、96欧美、8:日本、16韩国、0:其他）
  */
 export const getArtistList = (data) => {
-  return co(axios.post(`/artist/list`, data));
+  return co(request.post(`/artist/list`, data));
 };
 /**
  * @description 搜索音乐 / 专辑 / 歌手 / 歌单 / 用户 , 关键词可以多个 , 以空格隔开 , 如 " 周杰伦 搁浅 "
@@ -23,15 +21,30 @@ export const getArtistList = (data) => {
  * @returns {Promise}
  */
 export const cloudsearch = (params) =>
-  co(axios.get("/cloudsearch", { params }));
+  co(request.get("/cloudsearch", { params }));
 /**
  * @description 获取 APP 首页信息
  */
-export const getHomePageData = () => co(axios.post("/homepage/block/page"));
+export const getHomePageData = () => co(request.post("/homepage/block/page"));
 
 /**
  * @description
  */
 
 export const getHomepageDragonBall = () =>
-  co(axios.get("/homepage/dragon/ball1"));
+  co(request.get("/homepage/dragon/ball"));
+/**
+ * @description 调用此接口 ,传入手机号码, 可发送验证码
+ * @param {*} params
+ * @param {String} params.phone 手机号码
+ */
+export const getCaptcha = (params) =>
+  co(request.get("/captcha/sent", { params }));
+/**
+ * @description 手机号+验证码登陆
+ * @param {*} data
+ * @param {String} data.phone 手机号码
+ * @param {String} data.captcha 验证码
+ */
+export const loginCellphone = (data) =>
+  co(request.post("/login/cellphone", data));
